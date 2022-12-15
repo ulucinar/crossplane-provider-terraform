@@ -7,6 +7,9 @@ spec:
   names:
     kind: XSubnet
     plural: xsubnets
+  claimNames:
+    kind: Subnet
+    plural: subnets
   versions:
   - name: v1alpha1
     served: true
@@ -20,8 +23,11 @@ spec:
             properties:
               vpcName:
                 type: string
+              vpcTag:
+                type: string
             required:
             - vpcName
+            - vpcTag
           status:
             description: A Status represents the observed state
             properties:

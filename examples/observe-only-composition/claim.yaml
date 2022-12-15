@@ -1,0 +1,9 @@
+apiVersion: aws.platformref.upbound.io/v1alpha1
+kind: Subnet
+metadata:
+  name: subnet-with-observe-only-vpc
+spec:
+  compositionRef:
+    name: xsubnets.aws.platformref.upbound.io
+  vpcName: observeonly-alper
+  vpcTag: mytag

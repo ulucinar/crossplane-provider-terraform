@@ -44,14 +44,24 @@ spec:
             fromFieldPath: Optional
     - name: subnet
       base:
-        apiVersion: ec2.aws.upbound.io/v1beta1
+        apiVersion: ec2.aws.crossplane.io/v1beta1
         kind: Subnet
         spec:
           forProvider:
             region: eu-central-1
             cidrBlock: 10.0.0.0/25
+            tags:
+            - key: tag1
+            - key: tag2
+            - key: tag3
       patches:
         - fromFieldPath: status.share.vpcId
           toFieldPath: spec.forProvider.vpcId
           policy:
             fromFieldPath: Required
+        - fromFieldPath: spec.vpcTag
+          toFieldPath: spec.forProvider.tags[0].value
+        - fromFieldPath: spec.vpcTag
+          toFieldPath: spec.forProvider.tags[1].value
+        - fromFieldPath: spec.vpcTag
+          toFieldPath: spec.forProvider.tags[2].value
